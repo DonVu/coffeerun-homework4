@@ -15,6 +15,29 @@
     }
   }
 
+  function Row(coffeeOrder) {
+    var $div = $("<div></div>", {
+      "data-coffee-order": "checkedbox",
+      "class": "checkedbox"
+    });
+
+    var $label = $("<label></label>");
+
+    var $checkbox = $("<inpute></input>", {
+      type: "checkbox",
+      value: coffeeOrder.emailAddress
+    });
+
+    var description =  coffeeOrder.size + " ";
+    if (coffeeOrder.flavor) {
+      description +=coffeeOrder.flavor+ " ";
+    }
+
+    description += coffeeOrder.coffee + ", ";
+    description += " (" + coffeeOrder.emailAddress + ")";
+    description += " [" + coffeeOrder.strength + "x]";
+  }
+
   App.Checklist = Checklist;
   window.App = App;
 }) (window);
