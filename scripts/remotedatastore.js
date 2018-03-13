@@ -1,4 +1,4 @@
-(function (window) {
+(function(window) {
   "use strict";
   var App = window.App || {};
   var $ = window.jQuery;
@@ -11,30 +11,30 @@
     this.serverUrl = url;
   }
 
-  RemoteDataStore.prototype.add = function (key, val) {
-    $.post(this.serverUrl, val, function (serverResponse) {
+  RemoteDataStore.prototype.add = function(key, val) {
+    $.post(this.serverUrl, val, function(serverResponse) {
       console.log(serverResponse);
     });
   };
 
-  RemoteDataStore.prototype.getAll = function (cb) {
-    $.get(this.serverUrl, function (serverResponse) {
-      console.log(serverResponse);
-      cb(serverResponse);
-    });
-  };
-
-  RemoteDataStore.prototype.get = function (key, cb) {
-    $.get(this.serverUrl + "/?emailAddress=" + key,  function (serverResponse) {
+  RemoteDataStore.prototype.getAll = function(cb) {
+    $.get(this.serverUrl, function(serverResponse) {
       console.log(serverResponse);
       cb(serverResponse);
     });
+  };
+
+  RemoteDataStore.prototype.get = function(key, cb) {
+    $.get(this.serverUrl + "/?emailAddress=" + key, function(serverResponse) {
+      console.log(serverResponse);
+      cb(serverResponse);
+    });
 
   };
 
-  RemoteDataStore.prototype.remove = function (key) {
+  RemoteDataStore.prototype.remove = function(key) {
     var r = this.serverUrl;
-    $.get(r + "/?emailAddress=" + key,  function (serverResponse) {
+    $.get(r + "/?emailAddress=" + key, function(serverResponse) {
       console.log(serverResponse);
 
       var json = serverResponse[0].id;
@@ -48,4 +48,4 @@
   App.RemoteDataStore = RemoteDataStore;
   window.App = App;
 
-}) (window);
+})(window);
